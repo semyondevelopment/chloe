@@ -122,8 +122,8 @@ function render() {
           <div class="absolute bottom-2 right-12 text-white/20">${icon('lightbulb', 70)}</div>
           <div class="relative">
             <div class="font-heading text-[0.62rem] uppercase tracking-bubble opacity-90">study</div>
-            <div class="font-display text-5xl mt-1 leading-none" style="font-family:'Dancing Script',cursive;font-weight:700">Six subjects, one goal</div>
-            <p class="font-display italic text-xl mt-2 max-w-xl">Track every minute. Watch the bars climb. The capital is built one study block at a time. ♡</p>
+            <div class="font-display text-5xl mt-1 leading-none" style="font-family:'Dancing Script',cursive;font-weight:700">Every subject, every minute</div>
+            <p class="font-display italic text-xl mt-2 max-w-xl">Log a session. Watch the bars climb. The capital is built one study block at a time. ♡</p>
             <div class="mt-4 flex flex-wrap gap-3 text-sm font-heading">
               <span class="px-3 py-1 rounded-full bg-white/25 backdrop-blur-sm">⏱ ${fmtMins(totalThisWeek)} this week</span>
               <span class="px-3 py-1 rounded-full bg-white/25 backdrop-blur-sm">🎯 ${overallPct}% of target</span>
@@ -191,7 +191,7 @@ function render() {
             <li>25-minute Pomodoros + 5-minute breaks beat any 2-hour grind.</li>
             <li>Daily target = weekly target ÷ 7. Smaller blocks every day &gt; one big crunch.</li>
             <li>Add a note for each block — your future self thanks you when reviewing.</li>
-            <li>The 6 default subjects are tuned for UCAT + medicine prep. Click ✏️ on any subject to rename for your own goal.</li>
+            <li>Tap ✏️ on any subject to rename it, change the colour, or update the weekly target.</li>
           </ul>
         </section>
       </div>

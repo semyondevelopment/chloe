@@ -13,7 +13,7 @@ const KIND_META: Record<Resource['kind'], { iconName: string; label: string; tin
   community:   { iconName: 'hearts',      label: 'Communities',     tint: 'border-coral bg-rose-mist text-coral' },
 };
 
-type SubTab = 'all' | 'resume' | 'letters' | 'drillyard';
+type SubTab = 'all' | 'ai' | 'resume' | 'letters' | 'drillyard';
 let host: HTMLElement | null = null;
 let activeTab: SubTab = 'all';
 
@@ -45,12 +45,14 @@ function render() {
         <!-- Sub-tabs -->
         <div class="flex flex-wrap gap-2 sticky top-0 z-10 py-2 bg-cotton/80 backdrop-blur-sm rounded-2xl">
           ${subTabBtn('all',       'All Resources',  'library')}
+          ${subTabBtn('ai',        'AI Study Tools', 'wand')}
           ${subTabBtn('resume',    'Resume',         'file')}
           ${subTabBtn('letters',   'Cover Letters',  'mail')}
           ${subTabBtn('drillyard', 'Drill Yard',     'dumbbell')}
         </div>
 
         ${activeTab === 'all'       ? renderAllResources() : ''}
+        ${activeTab === 'ai'        ? renderAIBlock()      : ''}
         ${activeTab === 'resume'    ? renderResumeBlock()  : ''}
         ${activeTab === 'letters'   ? renderLettersBlock() : ''}
         ${activeTab === 'drillyard' ? renderDrillBlock()   : ''}
@@ -75,6 +77,123 @@ function subTabBtn(id: SubTab, label: string, iconName: string): string {
       <span class="${active ? 'text-white' : 'text-bubblegum-deep'}">${icon(iconName, 16)}</span>
       <span class="font-heading text-sm font-semibold">${label}</span>
     </button>
+  `;
+}
+
+function renderAIBlock(): string {
+  type AITool = { name: string; url: string; tagline: string; cost: string; bestFor: string; tier: 'must' | 'great' | 'nice' };
+  const tools: AITool[] = [
+    { name: 'ChatGPT (GPT-5)',       url: 'https://chatgpt.com/',                 tagline: 'the swiss-army study buddy',         cost: 'free + $30/mo plus',  bestFor: 'explaining concepts, generating practice questions, summarising notes, essay outlines',                 tier: 'must' },
+    { name: 'Claude',                url: 'https://claude.ai/',                   tagline: 'the careful, long-form thinker',     cost: 'free + $25/mo pro',   bestFor: 'long PDF / textbook chapter summaries, essay feedback, working through proofs step-by-step',           tier: 'must' },
+    { name: 'NotebookLM (Google)',   url: 'https://notebooklm.google.com/',       tagline: 'upload your notes — get instant tutor', cost: 'free',             bestFor: 'paste in your school notes / textbook PDFs and ask it questions, generate audio overviews of chapters', tier: 'must' },
+    { name: 'Khanmigo (Khan Academy)', url: 'https://www.khanacademy.org/khan-labs', tagline: 'AI tutor that won\'t just give the answer', cost: 'free for QLD students', bestFor: 'maths and science walk-throughs, especially Methods + Specialist topics',                              tier: 'great' },
+    { name: 'Wolfram Alpha',         url: 'https://www.wolframalpha.com/',        tagline: 'the maths cheat-code (use ethically)', cost: 'free + paid pro',   bestFor: 'check your maths working, plot graphs, see step-by-step solutions',                                     tier: 'great' },
+    { name: 'Photomath',             url: 'https://photomath.com/',               tagline: 'phone camera → solved equation',     cost: 'free + premium',      bestFor: 'snap a Methods or Specialist question, get a step-by-step solution',                                   tier: 'great' },
+    { name: 'Quizlet (with AI)',     url: 'https://quizlet.com/',                 tagline: 'flashcards + AI question generator',  cost: 'free + $35/yr plus',  bestFor: 'auto-generate flashcards from notes, ready-made decks for Bio + Chem',                                  tier: 'great' },
+    { name: 'Anki + ChatGPT plugin', url: 'https://apps.ankiweb.net/',            tagline: 'spaced-repetition GOAT',             cost: 'free (Mac/PC/web)',   bestFor: 'long-term memory for Bio facts, Chem reactions, Lit quotes — paste a topic into ChatGPT, get a deck',  tier: 'great' },
+    { name: 'Yoodli',                url: 'https://app.yoodli.ai/',               tagline: 'AI speaking coach',                  cost: 'free tier',           bestFor: 'practice oral presentations + interview answers, get filler-word + pace feedback',                      tier: 'nice' },
+    { name: 'Perplexity',            url: 'https://www.perplexity.ai/',           tagline: 'AI search engine with citations',    cost: 'free + $20/mo pro',   bestFor: 'research for Geography case studies and Lit context — links its sources',                              tier: 'nice' },
+    { name: 'Grammarly',             url: 'https://www.grammarly.com/',           tagline: 'silent essay editor',                cost: 'free + $30/mo prem',  bestFor: 'final-pass on essays — catches the typos a tired brain misses',                                        tier: 'nice' },
+    { name: 'Mathpix',               url: 'https://mathpix.com/',                 tagline: 'OCR for handwritten maths',          cost: 'free 50/mo',          bestFor: 'scan handwritten working into LaTeX, then ask Claude to check it',                                      tier: 'nice' },
+  ];
+
+  type Tip = { title: string; body: string; emoji: string };
+  const tips: Tip[] = [
+    { emoji: '🎯', title: 'Use AI for active recall, not passive reading',
+      body: 'Don\'t just ask "explain mitosis." Ask: "Quiz me on mitosis with 5 multiple-choice questions, then mark my answers and explain what I missed." Active retrieval = real learning.' },
+    { emoji: '🧠', title: 'The "explain it to a Year 9" trick',
+      body: 'When a topic feels foggy, type: "Explain [topic] like I\'m in Year 9. Then explain it again at Year 12 level." The double-pass cements the foundation.' },
+    { emoji: '📝', title: 'Have it grade your essays — but read the feedback',
+      body: 'Paste your draft + the marking rubric (your syllabus has one). Ask: "Give me 3 specific weaknesses and one thing to keep." Don\'t accept "great work!" — push for harsh.' },
+    { emoji: '⚡', title: 'Practice questions, every time',
+      body: 'After learning anything, end with: "Give me 10 exam-style questions on this, with answers I can check after." Better than re-reading the same notes for the 4th time.' },
+    { emoji: '🌸', title: 'Voice-explain to AI, then let it correct',
+      body: 'Open ChatGPT voice mode. Explain a topic out loud as if to a friend. Ask: "What did I get wrong? What did I miss?" The Feynman technique on rocket fuel.' },
+    { emoji: '⏱', title: 'Pomodoro + AI = a great study hour',
+      body: '25 min of practice questions → 5 min ask AI to clarify everything you flagged → repeat 4×. Ends a study session knowing exactly what your weak spots are.' },
+    { emoji: '📚', title: 'For Lit + English: paste-and-probe',
+      body: '"Here\'s a paragraph from [text]. List 3 techniques the author uses, name them, and explain the effect on the reader." Builds your essay analysis vocabulary fast.' },
+    { emoji: '🌏', title: 'For Geography: case-study generators',
+      body: 'Ask: "Give me 3 recent Australian case studies for [topic, e.g. urban consolidation]. Include statistics, dates, and one quote per case." Your essays get specific, not generic.' },
+    { emoji: '🛡️', title: 'Don\'t paste exam answers wholesale',
+      body: 'Use AI to learn, not to submit. Most QCE assessments are checked by Turnitin + AI detectors now. Use it to *understand*, then write in your own voice.' },
+    { emoji: '🩷', title: 'Ask "what would the marker want?"',
+      body: '"For QCE [subject] [task], what does a top-grade response usually contain that a B-grade response doesn\'t?" Calibrates your aim.' },
+  ];
+
+  const tierLabel: Record<AITool['tier'], { name: string; tint: string }> = {
+    must:  { name: 'must-have', tint: 'border-hotpink bg-hotpink text-white' },
+    great: { name: 'great',     tint: 'border-bubblegum bg-bubblegum text-white' },
+    nice:  { name: 'nice',      tint: 'border-lilac bg-lilac text-white' },
+  };
+
+  return `
+    <div class="space-y-6">
+      <div class="res-card rounded-3xl bg-gradient-to-br from-bubblegum via-hotpink to-lilac-deep text-white p-6 shadow-bubble relative overflow-hidden">
+        <div class="absolute -top-3 -right-3 text-white/25">${icon('wand', 110)}</div>
+        <div class="relative">
+          <div class="font-heading uppercase tracking-bubble text-xs opacity-90">AI study tools</div>
+          <div class="font-display text-3xl mt-1" style="font-family:'Dancing Script',cursive;font-weight:700">Smarter, not harder</div>
+          <p class="opacity-95 mt-1">A curated stack — what to use, what each is best at, and how to actually study with it. ♡</p>
+        </div>
+      </div>
+
+      <section class="res-card">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-bubblegum-deep">${icon('lightbulb', 18)}</span>
+          <span class="font-heading uppercase tracking-bubble text-sm text-bubblegum-deep">how to actually study with AI</span>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          ${tips.map(t => `
+            <li class="rounded-2xl border-2 border-rose-soft bg-white p-4 hover:border-bubblegum transition shadow-bubble-soft">
+              <div class="flex items-start gap-2 mb-1">
+                <span class="text-2xl shrink-0">${t.emoji}</span>
+                <div class="font-heading font-semibold text-cocoa text-sm">${t.title}</div>
+              </div>
+              <p class="text-sm text-cocoa/85">${t.body}</p>
+            </li>
+          `).join('')}
+        </ul>
+      </section>
+
+      <section class="res-card">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-bubblegum-deep">${icon('sparkles', 18)}</span>
+          <span class="font-heading uppercase tracking-bubble text-sm text-bubblegum-deep">the toolkit · ranked by usefulness for QCE study</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          ${tools.map(t => `
+            <a href="${t.url}" target="_blank" rel="noopener noreferrer"
+               class="block group rounded-2xl border-2 border-rose-soft hover:border-bubblegum bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-bubble-soft">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div class="font-heading font-semibold text-cocoa">${t.name}</div>
+                <span class="text-[0.6rem] uppercase tracking-bubble font-heading rounded-full px-2 py-0.5 border-2 ${tierLabel[t.tier].tint}">
+                  ${tierLabel[t.tier].name}
+                </span>
+              </div>
+              <div class="font-script text-bubblegum-deep text-base leading-tight mb-1">${t.tagline}</div>
+              <div class="text-xs text-bubblegum-deep font-heading mb-1">💰 ${t.cost}</div>
+              <div class="text-sm text-cocoa/85 leading-snug">${t.bestFor}</div>
+              <div class="mt-2 inline-flex items-center gap-1 text-xs text-bubblegum-deep font-heading group-hover:translate-x-0.5 transition">
+                open ${icon('external', 12)}
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      </section>
+
+      <section class="res-card rounded-3xl bg-rose-mist border-2 border-rose-soft p-5">
+        <div class="font-heading uppercase tracking-bubble text-xs text-bubblegum-deep mb-2 flex items-center gap-2">${icon('zap', 16)} a starter routine</div>
+        <ol class="text-sm text-cocoa space-y-1.5 list-decimal list-inside">
+          <li>Open the textbook chapter / class notes you're studying.</li>
+          <li>Upload them to <span class="font-heading font-semibold">NotebookLM</span> as a source.</li>
+          <li>Ask it: "summarise the key concepts, then quiz me on them with 10 multiple-choice questions."</li>
+          <li>Whatever you got wrong → ask <span class="font-heading font-semibold">Claude</span> to explain that exact concept again with a worked example.</li>
+          <li>Re-do the questions. Move on only when you're hitting 9/10.</li>
+          <li>Log the session in <span class="font-heading font-semibold">Study</span> tab. Watch the bars climb. ♡</li>
+        </ol>
+      </section>
+    </div>
   `;
 }
 
