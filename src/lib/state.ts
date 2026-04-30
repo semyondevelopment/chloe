@@ -1,4 +1,6 @@
 import { quests } from '../data/quests';
+import { defaultSubjects } from '../data/study';
+import type { StudySubject, StudySession } from '../data/study';
 
 export type ApplicationEntry = {
   id: string;
@@ -31,6 +33,8 @@ export type State = {
   jobLikes: string[];
   jobMaybes: string[];
   jobDislikes: string[];
+  studySubjects: StudySubject[];
+  studySessions: StudySession[];
 };
 
 const KEY = 'chloe-operations-map-v1';
@@ -51,6 +55,8 @@ const initial: State = {
   jobLikes: [],
   jobMaybes: [],
   jobDislikes: [],
+  studySubjects: defaultSubjects,
+  studySessions: [],
 };
 
 let state: State = load();
@@ -118,6 +124,9 @@ export type Action =
   | { type: 'TOGGLE_SOUND' }
   | { type: 'DISMISS_LETTER' }
   | { type: 'RATE_JOB'; jobId: string; rating: 'like' | 'maybe' | 'dislike' | 'clear' }
+  | { type: 'ADD_STUDY_SESSION'; subjectId: string; minutes: number; note?: string; date?: string }
+  | { type: 'REMOVE_STUDY_SESSION'; id: string }
+  | { type: 'UPDATE_SUBJECT'; subjectId: string; patch: Partial<StudySubject> }
   | { type: 'RESET' };
 
 export function dispatch(action: Action): void {
@@ -197,6 +206,25 @@ function reduce(s: State, a: Action): State {
       const key = a.rating === 'like' ? 'jobLikes' : a.rating === 'maybe' ? 'jobMaybes' : 'jobDislikes';
       return { ...s, ...stripped, [key]: [...stripped[key], a.jobId] };
     }
+    case 'ADD_STUDY_SESSION': {
+      const e: StudySession = {
+        id: `st-${Date.now()}`,
+        subjectId: a.subjectId,
+        date: a.date ?? new Date().toISOString().slice(0, 10),
+        minutes: a.minutes,
+        note: a.note,
+      };
+      return { ...s, studySessions: [e, ...s.studySessions] };
+    }
+    case 'REMOVE_STUDY_SESSION':
+      return { ...s, studySessions: s.studySessions.filter(x => x.id !== a.id) };
+    case 'UPDATE_SUBJECT':
+      return {
+        ...s,
+        studySubjects: s.studySubjects.map(sub =>
+          sub.id === a.subjectId ? { ...sub, ...a.patch } : sub
+        ),
+      };
     case 'RESET':
       return seed({ ...initial, lastVisit: new Date().toISOString().slice(0, 10), streak: 1 });
   }

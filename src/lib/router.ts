@@ -1,4 +1,4 @@
-export type ViewName = 'home' | 'map' | 'jobs' | 'resources' | 'love';
+export type ViewName = 'home' | 'map' | 'jobs' | 'study' | 'resources' | 'love';
 
 let current: ViewName = 'home';
 const listeners = new Set<(v: ViewName) => void>();

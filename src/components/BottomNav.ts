@@ -13,7 +13,8 @@ const tabs: Tab[] = [
   { id: 'home',      label: 'Home',      iconName: 'home',       emoji: '🏠' },
   { id: 'map',       label: 'Map',       iconName: 'map',        emoji: '🗺️' },
   { id: 'jobs',      label: 'Jobs',      iconName: 'briefcase',  emoji: '💼' },
-  { id: 'resources', label: 'Resources', iconName: 'library',    emoji: '📚' },
+  { id: 'study',     label: 'Study',     iconName: 'book',       emoji: '📚' },
+  { id: 'resources', label: 'Tools',     iconName: 'library',    emoji: '🛍️' },
   { id: 'love',      label: 'Love',      iconName: 'heart',      emoji: '💌' },
 ];
 
@@ -38,7 +39,7 @@ function render() {
           const active = t.id === current;
           return `
             <button data-view="${t.id}"
-              class="nav-tab group relative flex flex-col items-center justify-center px-5 sm:px-7 py-2.5 transition-all
+              class="nav-tab group relative flex flex-col items-center justify-center px-3.5 sm:px-5 py-2.5 transition-all
                 ${active
                   ? 'text-white'
                   : 'text-cocoa hover:text-bubblegum-deep'}"

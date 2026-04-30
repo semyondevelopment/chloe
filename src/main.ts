@@ -11,6 +11,7 @@ import { mountMapView, unmountMapView } from './components/views/MapView';
 import { mountResources, unmountResources } from './components/views/Resources';
 import { mountLove, unmountLove } from './components/views/Love';
 import { mountJobs, unmountJobs } from './components/views/Jobs';
+import { mountStudy, unmountStudy } from './components/views/Study';
 
 import { getView, setView, onViewChange } from './lib/router';
 import type { ViewName } from './lib/router';
@@ -77,6 +78,7 @@ function unmountCurrent() {
   if (currentView === 'resources') unmountResources();
   if (currentView === 'love') unmountLove();
   if (currentView === 'jobs') unmountJobs();
+  if (currentView === 'study') unmountStudy();
 }
 
 function showView(v: ViewName) {
@@ -87,6 +89,7 @@ function showView(v: ViewName) {
   if (v === 'home')      mountHome(viewHost);
   if (v === 'map')       mountMapView(viewHost);
   if (v === 'jobs')      mountJobs(viewHost);
+  if (v === 'study')     mountStudy(viewHost);
   if (v === 'resources') mountResources(viewHost);
   if (v === 'love')      mountLove(viewHost);
 
@@ -130,6 +133,7 @@ document.addEventListener('keydown', e => {
   if (e.key === '1') setView('home');
   if (e.key === '2') setView('map');
   if (e.key === '3') setView('jobs');
-  if (e.key === '4') setView('resources');
-  if (e.key === '5') setView('love');
+  if (e.key === '4') setView('study');
+  if (e.key === '5') setView('resources');
+  if (e.key === '6') setView('love');
 });
