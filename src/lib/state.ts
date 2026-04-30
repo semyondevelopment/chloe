@@ -37,7 +37,7 @@ export type State = {
   studySessions: StudySession[];
 };
 
-const KEY = 'chloe-operations-map-v1';
+const KEY = 'chloe-operations-map-v2';
 
 const initial: State = {
   completedQuestIds: [],

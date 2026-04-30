@@ -7,15 +7,15 @@ export type StudySubject = {
   blurb: string;
 };
 
-// Six default subjects. Tuned for medicine prep — UCAT subtests + a science.
-// Chloe can rename them in Settings later (state stored in localStorage).
+// Six default subjects — standard QLD Year 12 sciences track for a medicine-bound student.
+// Chloe can rename / recolor / change weekly target in-place by tapping the ✏️ on any card.
 export const defaultSubjects: StudySubject[] = [
-  { id: 'verbal',      name: 'UCAT · Verbal Reasoning',       emoji: '📖',  color: '#FF5DA2', weeklyMinutes: 180, blurb: 'speed-reading + comprehension' },
-  { id: 'decision',    name: 'UCAT · Decision Making',         emoji: '🧠',  color: '#FF1493', weeklyMinutes: 150, blurb: 'logic puzzles, syllogisms, probability' },
-  { id: 'quant',       name: 'UCAT · Quantitative Reasoning',  emoji: '🔢',  color: '#C58BF2', weeklyMinutes: 150, blurb: 'mental maths under pressure' },
-  { id: 'abstract',    name: 'UCAT · Abstract Reasoning',      emoji: '✨',  color: '#E0B0FF', weeklyMinutes: 120, blurb: 'spot the pattern, fast' },
-  { id: 'situational', name: 'UCAT · Situational Judgement',   emoji: '💖',  color: '#FFB6C1', weeklyMinutes: 90,  blurb: 'doctor-ethics scenarios' },
-  { id: 'biology',     name: 'Biology / Anatomy',              emoji: '🌱',  color: '#B5EAD7', weeklyMinutes: 240, blurb: 'general science scaffolding' },
+  { id: 'english',     name: 'English',                  emoji: '📖',  color: '#FF5DA2', weeklyMinutes: 180, blurb: 'essays, analysis, exam practice' },
+  { id: 'methods',     name: 'Mathematical Methods',     emoji: '🔢',  color: '#FF1493', weeklyMinutes: 240, blurb: 'calculus, functions, statistics' },
+  { id: 'specialist',  name: 'Specialist Mathematics',   emoji: '∑',   color: '#C58BF2', weeklyMinutes: 180, blurb: 'vectors, complex numbers, proof' },
+  { id: 'biology',     name: 'Biology',                  emoji: '🌱',  color: '#B5EAD7', weeklyMinutes: 240, blurb: 'cells, systems, evolution' },
+  { id: 'chemistry',   name: 'Chemistry',                emoji: '🧪',  color: '#FFE066', weeklyMinutes: 240, blurb: 'reactions, organic, equilibrium' },
+  { id: 'physics',     name: 'Physics',                  emoji: '⚡',  color: '#E0B0FF', weeklyMinutes: 180, blurb: 'mechanics, waves, electricity' },
 ];
 
 export type StudySession = {
