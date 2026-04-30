@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Caveat:wght@500;600;700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+@import './textures.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  body {
+    font-family: 'Quicksand', system-ui, sans-serif;
+    color: #5C3A4C;
+    background: #FFE6EE;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  #app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  ::selection {
+    background: #FF5DA2;
+    color: #fff;
+  }
+  button {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  .text-stroke-pink {
+    -webkit-text-stroke: 2px #FF1493;
+  }
+  .text-glow-pink {
+    text-shadow: 0 0 14px rgba(255, 93, 162, 0.65), 0 2px 0 rgba(230, 62, 137, 0.45);
+  }
+  .text-shadow-cute {
+    text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(230, 62, 137, 0.45);
+  }
+  .scroll-parchment::-webkit-scrollbar {
+    width: 10px;
+  }
+  .scroll-parchment::-webkit-scrollbar-track {
+    background: rgba(255, 182, 193, 0.25);
+  }
+  .scroll-parchment::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FF5DA2, #FF1493);
+    border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.6);
+  }
+}
+
+.reduced-motion-on .animate-bobble,
+.reduced-motion-on .animate-wiggle,
+.reduced-motion-on .animate-sparkle-spin,
+.reduced-motion-on .animate-heart-pop,
+.reduced-motion-on .animate-rainbow-shift,
+.reduced-motion-on .animate-gradient-pan {
+  animation: none !important;
+}

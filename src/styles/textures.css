@@ -1,0 +1,198 @@
+/* ============================================================
+   Pink, fun, cartoon-bubblegum textures
+   ============================================================ */
+
+@layer components {
+  /* ---------- Cotton candy field ---------- */
+  .candy-field {
+    background-color: #FFF1F6;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(255, 93, 162, 0.20) 0%, transparent 28%),
+      radial-gradient(circle at 88% 12%, rgba(224, 176, 255, 0.30) 0%, transparent 32%),
+      radial-gradient(circle at 78% 88%, rgba(255, 224, 102, 0.35) 0%, transparent 30%),
+      radial-gradient(circle at 18% 82%, rgba(181, 234, 215, 0.35) 0%, transparent 32%),
+      radial-gradient(circle at 50% 50%, #FFE6EE 0%, #FFF1F6 60%);
+    background-size: 100% 100%;
+  }
+
+  .candy-deep {
+    background:
+      radial-gradient(circle at 30% 20%, #FFB6C1 0%, transparent 55%),
+      radial-gradient(circle at 70% 80%, #E0B0FF 0%, transparent 55%),
+      radial-gradient(circle at 50% 50%, #FFD1DC 0%, #FFB6C1 100%);
+  }
+
+  .gradient-rainbow {
+    background: linear-gradient(120deg,
+      #FFB6C1 0%,
+      #FF5DA2 20%,
+      #FF1493 40%,
+      #E0B0FF 60%,
+      #FFE066 80%,
+      #FFB6C1 100%);
+    background-size: 300% 300%;
+  }
+
+  .gradient-bubblegum {
+    background: linear-gradient(135deg, #FF5DA2 0%, #FF1493 50%, #E0B0FF 100%);
+    background-size: 200% 200%;
+  }
+
+  /* ---------- Polka dots ---------- */
+  .polka-pink {
+    background-image:
+      radial-gradient(circle at 16% 16%, rgba(255, 93, 162, 0.18) 4px, transparent 5px),
+      radial-gradient(circle at 48% 48%, rgba(255, 20, 147, 0.10) 3px, transparent 4px),
+      radial-gradient(circle at 80% 24%, rgba(224, 176, 255, 0.20) 5px, transparent 6px),
+      radial-gradient(circle at 24% 80%, rgba(255, 224, 102, 0.18) 4px, transparent 5px),
+      radial-gradient(circle at 84% 76%, rgba(181, 234, 215, 0.18) 4px, transparent 5px);
+    background-size: 80px 80px;
+  }
+
+  /* ---------- Sticker frame ---------- */
+  .sticker-frame {
+    background: #ffffff;
+    border: 4px solid #FF5DA2;
+    border-radius: 24px;
+    box-shadow:
+      0 0 0 4px #FFD1DC,
+      0 14px 0 -2px rgba(230, 62, 137, 0.25),
+      0 22px 36px -14px rgba(255, 20, 147, 0.4);
+  }
+
+  .heart-border {
+    position: relative;
+    border-radius: 28px;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      repeating-linear-gradient(45deg, #FF5DA2 0 8px, #FFE066 8px 16px, #E0B0FF 16px 24px, #B5EAD7 24px 32px) border-box;
+    border: 6px solid transparent;
+  }
+
+  /* ---------- Bubble button ---------- */
+  .btn-candy {
+    background: linear-gradient(180deg, #FFB6C1 0%, #FF5DA2 60%, #E63E89 100%);
+    color: #fff;
+    border-radius: 9999px;
+    padding: 14px 32px;
+    font-family: 'Fredoka', 'Quicksand', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 6px 0 #b62b6a, 0 14px 24px -8px rgba(255,20,147,0.55), inset 0 2px 0 rgba(255,255,255,0.6);
+    text-shadow: 0 1px 0 rgba(180, 30, 100, 0.6);
+    transition: transform 120ms cubic-bezier(.4,1.5,.5,1), box-shadow 120ms;
+    cursor: pointer;
+  }
+  .btn-candy:hover {
+    transform: translateY(-2px) rotate(-1.5deg);
+    box-shadow: 0 8px 0 #b62b6a, 0 18px 30px -10px rgba(255,20,147,0.65);
+  }
+  .btn-candy:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #b62b6a, 0 6px 12px -6px rgba(255,20,147,0.5);
+  }
+
+  /* ---------- Chloe wordmark ---------- */
+  .chloe-wordmark {
+    font-family: 'Dancing Script', 'Caveat', cursive;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF1493 0%, #FF5DA2 50%, #E0B0FF 100%);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 3px 0 rgba(230, 62, 137, 0.35)) drop-shadow(0 6px 10px rgba(255, 93, 162, 0.3));
+    letter-spacing: 0.005em;
+  }
+
+  .chloe-pill {
+    background: linear-gradient(135deg, #FF1493, #FF5DA2);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 0 #b62b6a, 0 8px 16px -6px rgba(255,20,147,0.5);
+  }
+
+  /* ---------- Floating sparkle ---------- */
+  .sparkle-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 30% 30%, #fff 0%, #FFD9F0 40%, #FF5DA2 100%);
+    box-shadow: 0 0 12px #FFD9F0, 0 0 24px rgba(255,93,162,0.6);
+    pointer-events: none;
+  }
+
+  /* ---------- Tape strip ---------- */
+  .tape {
+    position: absolute;
+    width: 80px;
+    height: 22px;
+    background: linear-gradient(180deg, rgba(255, 224, 102, 0.85), rgba(255, 224, 102, 0.7));
+    border: 1px dashed rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.18);
+  }
+
+  /* ---------- Cloud float ---------- */
+  .cloud {
+    width: 120px; height: 64px;
+    background: #fff;
+    border-radius: 9999px;
+    position: relative;
+    filter: drop-shadow(0 6px 12px rgba(255, 93, 162, 0.18));
+  }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 9999px;
+  }
+  .cloud::before { width: 60px; height: 60px; left: 18px; top: -28px; }
+  .cloud::after  { width: 80px; height: 80px; right: 14px; top: -36px; }
+
+  /* ---------- Striped candy bar ---------- */
+  .stripe-candy {
+    background: repeating-linear-gradient(
+      45deg,
+      #FF5DA2 0 14px,
+      #fff 14px 28px,
+      #E0B0FF 28px 42px,
+      #fff 42px 56px
+    );
+    background-size: 200% 200%;
+  }
+
+  /* ---------- XP bar (cute) ---------- */
+  .xp-bar-fill {
+    background: linear-gradient(90deg, #FFE066 0%, #FF5DA2 50%, #FF1493 100%);
+    background-size: 200% 200%;
+    box-shadow: inset 0 -3px 0 rgba(230, 62, 137, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  /* ---------- Wax-seal-but-cute (a sticker) ---------- */
+  .heart-seal {
+    width: 56px; height: 56px;
+    background: radial-gradient(circle at 30% 30%, #FFB6C1 0%, #FF5DA2 60%, #E63E89 100%);
+    border-radius: 9999px;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px #FFD1DC, 0 6px 12px rgba(230, 62, 137, 0.5), inset 0 -6px 0 rgba(180, 30, 100, 0.35), inset 0 4px 0 rgba(255, 255, 255, 0.6);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bobble,
+  .animate-wiggle,
+  .animate-sparkle-spin,
+  .animate-heart-pop,
+  .animate-rainbow-shift,
+  .animate-gradient-pan {
+    animation: none !important;
+  }
+}
