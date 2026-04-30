@@ -1,9 +1,6 @@
 import { mountPath } from '../Path';
 
-let host: HTMLElement | null = null;
-
 export function mountMapView(parent: HTMLElement): void {
-  host = parent;
   parent.innerHTML = `
     <div class="h-full relative">
       <div class="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center pointer-events-none">
@@ -18,5 +15,5 @@ export function mountMapView(parent: HTMLElement): void {
 }
 
 export function unmountMapView(): void {
-  host = null;
+  /* Path component is replaced when view-host innerHTML is cleared by main.ts */
 }

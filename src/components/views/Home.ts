@@ -6,7 +6,6 @@ import { quotes } from '../../data/quotes';
 import { letterForToday } from '../../data/letters';
 import { icon } from '../../lib/icons';
 import { setView } from '../../lib/router';
-import { gsap } from 'gsap';
 
 let host: HTMLElement | null = null;
 let unsub: (() => void) | null = null;

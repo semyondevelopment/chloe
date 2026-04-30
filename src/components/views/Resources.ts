@@ -1,8 +1,6 @@
 import { quests } from '../../data/quests';
 import type { Resource } from '../../data/quests';
 import { icon } from '../../lib/icons';
-import { gsap } from 'gsap';
-import { getState } from '../../lib/state';
 
 const KIND_META: Record<Resource['kind'], { iconName: string; label: string; tint: string }> = {
   course:      { iconName: 'cap',         label: 'Courses',         tint: 'border-bubblegum bg-rose-mist text-bubblegum-deep' },

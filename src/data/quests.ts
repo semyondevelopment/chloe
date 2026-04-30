@@ -1,4 +1,5 @@
-import type { SigilName } from '../lib/sigils';
+// SigilName legacy strings are mapped to Lucide icon names in Path.ts
+type SigilName = string;
 
 export type Resource = {
   label: string;
