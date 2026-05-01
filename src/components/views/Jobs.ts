@@ -84,7 +84,7 @@ function jobCardHTML(j: JobType, expanded = false): string {
 
         <div>
           <div class="font-heading uppercase tracking-bubble text-[0.62rem] text-bubblegum-deep mb-0.5">why it fits chloe</div>
-          <p class="font-display italic text-cocoa text-sm border-l-4 border-bubblegum pl-3">${j.whyItFits}</p>
+          <p class="font-ui text-cocoa text-base sm:text-lg leading-relaxed border-l-4 border-bubblegum pl-3">${j.whyItFits}</p>
         </div>
 
         ${expanded ? `
