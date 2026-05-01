@@ -19,12 +19,12 @@ export function renderApplications(host: HTMLElement): void {
 
   host.innerHTML = `
     <div class="space-y-6">
-      <div class="grid grid-cols-5 gap-2">
+      <div class="grid grid-cols-5 gap-1.5">
         ${(Object.keys(STATUS_META) as ApplicationEntry['status'][]).map(k => `
-          <div class="rounded-2xl border-2 border-rose-soft bg-white px-3 py-2 text-center">
-            <div class="text-2xl">${STATUS_META[k].emoji}</div>
-            <div class="font-heading text-xs uppercase tracking-bubble text-bubblegum-deep">${STATUS_META[k].label}</div>
-            <div class="font-display text-2xl text-cocoa font-semibold">${counts[k]}</div>
+          <div class="rounded-2xl border-2 border-rose-soft bg-white px-1.5 sm:px-3 py-2 text-center">
+            <div class="text-xl sm:text-2xl">${STATUS_META[k].emoji}</div>
+            <div class="hidden sm:block font-heading text-xs uppercase tracking-bubble text-bubblegum-deep">${STATUS_META[k].label}</div>
+            <div class="font-display text-xl sm:text-2xl text-cocoa font-semibold">${counts[k]}</div>
           </div>
         `).join('')}
       </div>

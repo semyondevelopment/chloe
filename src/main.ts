@@ -37,7 +37,7 @@ app.innerHTML = `
     <div class="sparkle-dot animate-sparkle-spin" style="bottom:42%; left:18%; animation-delay:1.6s;"></div>
 
     <!-- Top HUD (slim, persistent) -->
-    <header id="hud-top" class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 px-5 pt-3 pb-2"></header>
+    <header id="hud-top" class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between gap-3 pl-4 pr-16 sm:px-5 pt-3 pb-2"></header>
 
     <!-- View host -->
     <section id="view-host" class="absolute z-10 left-0 right-0" style="top:74px; bottom:0;"></section>

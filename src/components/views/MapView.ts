@@ -7,7 +7,8 @@ export function mountMapView(parent: HTMLElement): void {
         <div class="font-heading text-[0.62rem] uppercase tracking-bubble text-bubblegum-deep">scroll to explore</div>
         <div class="font-script text-bubblegum-deep text-2xl">your career roadmap ♡</div>
       </div>
-      <div id="path-mount" class="absolute inset-0"></div>
+      <div id="path-mount" class="absolute top-0 left-0 right-0"
+           style="bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));"></div>
     </div>
   `;
   const mount = parent.querySelector<HTMLElement>('#path-mount');

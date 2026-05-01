@@ -112,7 +112,7 @@ function render() {
   const sessionsToday = s.studySessions.filter(x => x.date === today);
 
   host.innerHTML = `
-    <div class="h-full overflow-y-auto scroll-parchment pb-32">
+    <div class="h-full overflow-y-auto scroll-parchment pb-nav-safe">
       <div class="max-w-5xl mx-auto px-6 pt-6 pb-8 space-y-6">
 
         <!-- Hero -->

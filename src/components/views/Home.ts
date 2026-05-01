@@ -57,11 +57,11 @@ function render() {
   });
 
   host.innerHTML = `
-    <div class="h-full overflow-y-auto scroll-parchment pb-32">
+    <div class="h-full overflow-y-auto scroll-parchment pb-nav-safe">
       <div class="max-w-5xl mx-auto px-6 pt-6 pb-8 space-y-6">
 
         <!-- Hero -->
-        <section id="home-hero" class="rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-bubble"
+        <section id="home-hero" class="rounded-3xl p-5 sm:p-8 md:p-10 text-white relative overflow-hidden shadow-bubble"
           style="background: linear-gradient(135deg, #FF5DA2 0%, #FF1493 50%, #C58BF2 100%); background-size: 200% 200%;"
           class="animate-rainbow-shift">
           <div class="absolute -top-6 -right-6 text-white/30">${icon('sparkles', 120)}</div>
@@ -69,7 +69,7 @@ function render() {
 
           <div class="relative">
             <div class="font-heading text-[0.7rem] uppercase tracking-bubble opacity-90 mb-1">${greet}</div>
-            <div class="font-display text-5xl md:text-6xl leading-none text-shadow-cute">
+            <div class="font-display text-4xl sm:text-5xl md:text-6xl leading-none text-shadow-cute">
               <span style="font-family:'Dancing Script',cursive;font-weight:700">Chloe</span><span class="opacity-90">,</span>
             </div>
             <p class="font-display italic text-xl md:text-2xl mt-3 max-w-2xl leading-snug">

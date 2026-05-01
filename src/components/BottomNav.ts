@@ -31,7 +31,8 @@ function render() {
   const current = getView();
 
   host.innerHTML = `
-    <div class="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center pb-4 px-3">
+    <div class="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center px-3"
+         style="padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));">
       <nav class="pointer-events-auto bg-white/95 backdrop-blur-md rounded-[2rem]
         border-4 border-bubblegum shadow-bubble flex items-stretch overflow-hidden
         max-w-[calc(100vw-1.5rem)]">
@@ -39,7 +40,7 @@ function render() {
           const active = t.id === current;
           return `
             <button data-view="${t.id}"
-              class="nav-tab group relative flex flex-col items-center justify-center px-3.5 sm:px-5 py-2.5 transition-all
+              class="nav-tab group relative flex flex-col items-center justify-center px-2.5 sm:px-4 py-2.5 transition-all
                 ${active
                   ? 'text-white'
                   : 'text-cocoa hover:text-bubblegum-deep'}"

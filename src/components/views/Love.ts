@@ -29,7 +29,7 @@ function render() {
     .filter(x => x.i !== todayIdx);
 
   host.innerHTML = `
-    <div class="h-full overflow-y-auto scroll-parchment pb-32">
+    <div class="h-full overflow-y-auto scroll-parchment pb-nav-safe">
       <div class="max-w-3xl mx-auto px-6 pt-6 pb-8 space-y-6">
 
         <header id="love-hero" class="rounded-3xl text-white p-7 shadow-bubble relative overflow-hidden"

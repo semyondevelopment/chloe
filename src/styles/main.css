@@ -56,6 +56,11 @@
   }
 }
 
+/* Bottom nav clearance — used on every scrollable view */
+.pb-nav-safe {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
 .reduced-motion-on .animate-bobble,
 .reduced-motion-on .animate-wiggle,
 .reduced-motion-on .animate-sparkle-spin,
